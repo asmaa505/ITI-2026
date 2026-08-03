@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<title>Fixed Navbar Example</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: #f4f6f8;
+    color: #222;
+    line-height: 1.8;
+  }
+
+  /* ===== Page header ===== */
+  .page-header {
+    background: #2c3e50;
+    color: #fff;
+    padding: 30px 20px;
+    text-align: center;
+  }
+  .page-header h1 { font-size: 24px; margin-bottom: 8px; }
+  .page-header p { color: #cfd8dc; font-size: 15px; }
+
+  /* ===== The fixed navbar ===== */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #e74c3c;
+    color: #fff;
+    padding: 16px 24px;
+    font-weight: bold;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+
+  .navbar .status {
+    font-size: 13px;
+    background: rgba(255,255,255,0.2);
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  /* Because fixed elements are taken OUT of normal flow,
+     we must manually push the content down so it doesn't
+     hide behind the navbar. This is the classic "fixed" gotcha. */
+  .content-wrapper {
+    padding-top: 70px; /* must match navbar height roughly */
+  }
+
+  .spacer-before {
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: repeating-linear-gradient(45deg, #eef2f5, #eef2f5 20px, #e4e9ed 20px, #e4e9ed 40px);
+    font-size: 18px;
+    color: #607d8b;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .content {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  .content section {
+    background: #fff;
+    padding: 24px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+  .content h2 { color: #e74c3c; margin-bottom: 10px; font-size: 18px; }
+  .content code {
+    background: #f0f0f0;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+    color: #c0392b;
+  }
+  .filler {
+    height: 500px;
+    background: #fafafa;
+    border: 2px dashed #ddd;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+  }
+</style>
+</head>
+<body>
+
+  <nav class="navbar" id="myNavbar">
+    <span>🎓 EduCore Navbar (fixed)</span>
+    <span class="status">Always fixed — from the very first pixel</span>
+  </nav>
+
+  <div class="content-wrapper">
+
+    <div class="page-header">
+      <h1>📌 position: fixed Navbar Example</h1>
+      <p>Notice the red navbar is fixed to the top from the moment the page loads — even before you scroll.</p>
+    </div>
+
+    <div class="spacer-before">
+      Scroll down... notice the navbar never moves, it's already "stuck" from the start.
+    </div>
+
+    <div class="content">
+
+      <section>
+        <h2>What's happening?</h2>
+        <p>
+          This navbar has <code>position: fixed; top: 0; left: 0; width: 100%;</code>.
+          Unlike <code>sticky</code>, a fixed element is removed from the normal document flow
+          immediately — it doesn't wait for a scroll threshold. It's positioned relative to the
+          viewport (the browser window), not its parent container.
+        </p>
+      </section>
+
+      <section>
+        <h2>The core CSS</h2>
+        <p style="margin-top:8px;">
+          <code>.navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; }</code>
+        </p>
+      </section>
+
+      <section>
+        <h2>The classic "fixed" gotcha</h2>
+        <p>
+          Because the navbar is taken out of the normal flow, the content right below it would
+          normally slide up and hide underneath it. That's why we added
+          <code>padding-top</code> on the wrapper below the navbar — to manually reserve space.
+          <code>sticky</code> doesn't need this trick because it stays part of the normal flow.
+        </p>
+      </section>
+
+      <section>
+        <h2>fixed vs sticky — quick comparison</h2>
+        <p>
+          <code>fixed</code>: stuck to the viewport immediately, removed from flow, needs manual spacing.<br>
+          <code>sticky</code>: behaves normally until a scroll threshold (like <code>top: 0</code>), then sticks — but only within its parent container, and stays part of the flow.
+        </p>
+      </section>
+
+      <div class="filler">
+        Keep scrolling... the red navbar stays exactly where it is, no matter what 🎯
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS position — interactive explainer</title>
+<style>
+  :root {
+    --bg: #f7f8fa;
+    --surface: #ffffff;
+    --surface-2: #f1f2f5;
+    --text: #181c24;
+    --text-secondary: #565e6b;
+    --text-muted: #8a919c;
+    --border: #e4e7eb;
+    --border-strong: #cfd3d9;
+    --accent: #4f46e5;
+    --accent-bg: #eeedfd;
+    --accent-text: #37308a;
+    --warn: #b4690a;
+    --warn-bg: #fbead2;
+    --warn-border: #e3a13d;
+    --code-bg: #171a21;
+    --code-text: #cbd2db;
+    --code-prop: #81b2ff;
+    --code-val: #f7ac60;
+    --code-punc: #6e7682;
+    --code-sel: #c49aff;
+    --radius: 10px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1115;
+      --surface: #171a20;
+      --surface-2: #1e222a;
+      --text: #e7e9ec;
+      --text-secondary: #a7adb8;
+      --text-muted: #767d88;
+      --border: #2a2f38;
+      --border-strong: #3a4049;
+      --accent: #8983f0;
+      --accent-bg: #262358;
+      --accent-text: #cfcbfa;
+      --warn: #f5b95c;
+      --warn-bg: #40300f;
+      --warn-border: #c98a2a;
+      --code-bg: #0c0e12;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 40px 20px 80px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+  }
+  .wrap { width: 100%; max-width: 760px; }
+  h1 { font-size: 26px; font-weight: 600; margin: 0 0 6px; }
+  .subtitle { font-size: 15px; color: var(--text-secondary); margin: 0 0 28px; }
+  .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 16px; }
+  .step-btn {
+    border: 0.5px solid var(--border-strong);
+    background: var(--surface);
+    color: var(--text);
+    padding: 8px 16px;
+    border-radius: var(--radius);
+    font-size: 14px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background .15s, border-color .15s, color .15s;
+  }
+  .step-btn:hover { background: var(--surface-2); }
+  .step-btn.active {
+    border: 2px solid var(--accent);
+    background: var(--accent-bg);
+    color: var(--accent-text);
+    padding: 7px 15px;
+  }
+  #democontainer {
+    position: relative;
+    transform: translateZ(0);
+    overflow: auto;
+    height: 320px;
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface-2);
+    padding: 18px;
+  }
+  .sib {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 14px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+  #target {
+    background: var(--warn-bg);
+    border: 2px solid var(--warn-border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 14px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--warn);
+    transition: top .35s ease, left .35s ease, right .35s ease, bottom .35s ease;
+  }
+  .pos-static { position: static; }
+  .pos-relative { position: relative; top: 22px; left: 26px; }
+  .pos-absolute { position: absolute; top: 18px; right: 18px; margin: 0; }
+  .pos-fixed { position: fixed; bottom: 18px; right: 18px; margin: 0; }
+  .pos-sticky { position: sticky; top: 0; }
+  #hint {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin: 10px 2px 0;
+    min-height: 18px;
+  }
+  .info-row { display: flex; gap: 18px; margin-top: 20px; flex-wrap: wrap; }
+  #code {
+    flex: 1 1 260px;
+    background: var(--code-bg);
+    border-radius: 10px;
+    padding: 16px 18px;
+    font-family: "SF Mono", "Cascadia Code", Consolas, monospace;
+    font-size: 13.5px;
+    line-height: 1.7;
+    margin: 0;
+    white-space: pre;
+  }
+  #code .prop { color: var(--code-prop); }
+  #code .val { color: var(--code-val); }
+  #code .punc { color: var(--code-punc); }
+  #code .sel { color: var(--code-sel); }
+  #code .plain { color: var(--code-text); }
+  #caption {
+    flex: 1 1 260px;
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .legend {
+    margin-top: 44px;
+    border-top: 0.5px solid var(--border);
+    padding-top: 28px;
+  }
+  .legend h2 { font-size: 16px; font-weight: 600; margin: 0 0 14px; }
+  .legend-item {
+    display: flex;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .legend-item:last-child { border-bottom: none; }
+  .legend-name {
+    flex: 0 0 90px;
+    font-family: "SF Mono", Consolas, monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent-text);
+    background: var(--accent-bg);
+    border-radius: 6px;
+    padding: 3px 8px;
+    height: fit-content;
+  }
+  .legend-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>CSS position property</h1>
+  <p class="subtitle">Click a value below — the box uses the real CSS property, not an animation.</p>
+
+  <div class="tabs">
+    <button type="button" class="step-btn" data-step="static">static</button>
+    <button type="button" class="step-btn" data-step="relative">relative</button>
+    <button type="button" class="step-btn" data-step="absolute">absolute</button>
+    <button type="button" class="step-btn" data-step="fixed">fixed</button>
+    <button type="button" class="step-btn" data-step="sticky">sticky</button>
+  </div>
+
+  <div id="democontainer">
+    <div class="sib">Box A</div>
+    <div id="target" class="pos-static">TARGET</div>
+    <div class="sib">Box B</div>
+    <div class="sib">Box C</div>
+    <div style="height:380px;"></div>
+  </div>
+
+  <p id="hint"></p>
+
+  <div class="info-row">
+    <pre id="code"></pre>
+    <div id="caption"></div>
+  </div>
+
+  <div class="legend">
+    <h2>Quick reference</h2>
+    <div class="legend-item">
+      <div class="legend-name">static</div>
+      <div class="legend-desc">Default flow. Offsets and z-index are ignored entirely.</div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-name">relative</div>
+      <div class="legend-desc">Offset from its own normal slot; the original space stays reserved.</div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-name">absolute</div>
+      <div class="legend-desc">Out of flow; placed against the nearest positioned ancestor.</div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-name">fixed</div>
+      <div class="legend-desc">Out of flow; placed against the viewport, ignoring scroll.</div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-name">sticky</div>
+      <div class="legend-desc">Relative, then locks like fixed once a scroll threshold is passed.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var steps = {
+    static: {
+      code: [["plain", ".target {\n  "], ["prop", "position"], ["punc", ": "], ["val", "static"], ["punc", ";\n}"]],
+      caption: "Default for every element. It follows normal document flow in source order. top, left, right, bottom and z-index are all ignored.",
+      hint: ""
+    },
+    relative: {
+      code: [["plain", ".target {\n  "], ["prop", "position"], ["punc", ": "], ["val", "relative"], ["punc", ";\n  "],
+             ["prop", "top"], ["punc", ": "], ["val", "20px"], ["punc", ";\n  "],
+             ["prop", "left"], ["punc", ": "], ["val", "24px"], ["punc", ";\n}"]],
+      caption: "Offset from where it would normally sit. Its original space in the flow stays reserved, so Box B and Box C never move.",
+      hint: ""
+    },
+    absolute: {
+      code: [["plain", ".target {\n  "], ["prop", "position"], ["punc", ": "], ["val", "absolute"], ["punc", ";\n  "],
+             ["prop", "top"], ["punc", ": "], ["val", "16px"], ["punc", ";\n  "],
+             ["prop", "right"], ["punc", ": "], ["val", "16px"], ["punc", ";\n}"]],
+      caption: "Removed from flow entirely, so Box B and Box C close the gap. Placed relative to the nearest positioned ancestor, here the container.",
+      hint: ""
+    },
+    fixed: {
+      code: [["plain", ".target {\n  "], ["prop", "position"], ["punc", ": "], ["val", "fixed"], ["punc", ";\n  "],
+             ["prop", "bottom"], ["punc", ": "], ["val", "16px"], ["punc", ";\n  "],
+             ["prop", "right"], ["punc", ": "], ["val", "16px"], ["punc", ";\n}"]],
+      caption: "Removed from flow and anchored to the viewport (here, the demo box itself, since it has its own positioning context). It never moves, even while you scroll.",
+      hint: "Scroll inside the box below ↓ the target stays put"
+    },
+    sticky: {
+      code: [["plain", ".target {\n  "], ["prop", "position"], ["punc", ": "], ["val", "sticky"], ["punc", ";\n  "],
+             ["prop", "top"], ["punc", ": "], ["val", "0"], ["punc", ";\n}"]],
+      caption: "Acts like relative until you scroll past its threshold, then it sticks like fixed — but only within its own container.",
+      hint: "Scroll inside the box below ↓ watch it stick at the top"
+    }
+  };
+
+  var target = document.getElementById('target');
+  var codeEl = document.getElementById('code');
+  var caption = document.getElementById('caption');
+  var hint = document.getElementById('hint');
+  var container = document.getElementById('democontainer');
+  var buttons = document.querySelectorAll('.step-btn');
+
+  function renderCode(parts) {
+    codeEl.innerHTML = '';
+    parts.forEach(function (p) {
+      var span = document.createElement('span');
+      span.className = p[0];
+      span.textContent = p[1];
+      codeEl.appendChild(span);
+    });
+  }
+
+  function setStep(name) {
+    target.className = 'pos-' + name;
+    renderCode(steps[name].code);
+    caption.textContent = steps[name].caption;
+    hint.textContent = steps[name].hint;
+    buttons.forEach(function (b) {
+      b.classList.toggle('active', b.dataset.step === name);
+    });
+    container.scrollTop = 0;
+  }
+
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () { setStep(b.dataset.step); });
+  });
+
+  setStep('static');
+</script>
+</body>
+</html>
