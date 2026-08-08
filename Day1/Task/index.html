@@ -7,17 +7,23 @@
     <title>My First ITI Web Page</title>
     <meta name="description" content="Personal page of an ITI student">
     <meta name="keyword" content="html, css, js, react, vue.js">
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        legend{
+            color: gold;
+        }
+    </style>
 </head>
 
 <!-- Body section starts here -->
 <body>
 
     <!-- Part 2 -->
-    <h1 id="top">Asmaa Maryah</h1>
-    <h2>About Me</h2>
+    <h1 id="top" class="test">Asmaa Maryah</h1>
+    <h2 style="text-decoration: underline;">About Me</h2>
 
-    <div style="background: pink;">
-        <h3>My Skills</h3>
+    <div class="about">
+        <h3 style="text-decoration: underline;">My Skills</h3>
         <p>
             I am a <strong>Front-End Developer</strong> and Computer Science student at Damietta University. I bridge the gap between software development and data science, with hands-on experience building web applications and managing data-driven projects. Outside of technology, <em>I maintain a disciplined strength training routine at the gym</em> and enjoy exploring classical 
             <mark>philosophical literature</mark>.
@@ -28,48 +34,55 @@
         </p>
     </div>
 
-    <!-- Part 3 -->
-    <a href="https://github.com/asmaa505" target="_blank">
-        <img src="./image/me.jpg" alt="personal photo" title="memo" width="250" height="300">
-    </a>
+
 
     <!-- Part 4 -->
     <hr>
-    <h3>My Hobbies</h3>
-    <ul>
-        <li>Gym & Strength Training
-            <ul type="circle">
-                <li>Hip Thrusts <sub>(3 sets)</sub></li>
-                <li>Lat Pulldowns <sup>(3)</sup></li>
-                <li>Bulgarian Split Squats <sub>(Heavy)</sub></li>
+    <div class="lists">
+        <div>
+            <h3>My Hobbies</h3>
+            <ul class="info">
+                <li>Gym & Strength Training
+                    <ul type="circle">
+                        <li>Hip Thrusts <sub>(3 sets)</sub></li>
+                        <li>Lat Pulldowns <sup>(3)</sup></li>
+                        <li>Bulgarian Split Squats <sub>(Heavy)</sub></li>
+                    </ul>
+                </li>
+                <li>Reading Philosophy</li>
+                <li>Music</li>
+                <li>PS</li>
+                <li>Coding</li>
             </ul>
-        </li>
-        <li>Reading Philosophy</li>
-        <li>Music</li>
-        <li>PS</li>
-        <li>Coding</li>
-    </ul>
-
-    <h3>My Daily Routine</h3>
-    <ol type="1">
-        <li>Reading</li>
-        <li>Studying</li>
-        <li>PS</li>
-        <li>Coding</li>
-        <li>Gym</li>
-        <li>Playing Violin</li>
-        <li>Family and friends</li>
-        <li>Sleep</li>
-    </ol>
-
+        </div>
+        
+        <div>
+            <h3>My Daily Routine</h3>
+            <ol type="1" class="info">
+                <li>Reading</li>
+                <li>Studying</li>
+                <li>PS</li>
+                <li>Coding</li>
+                <li>Gym</li>
+                <li>Playing Violin</li>
+                <li>Family and friends</li>
+                <li>Sleep</li>
+            </ol>
+        </div>
+        
+    </div>
+    
     <!-- Part 5 -->
     <hr>
-    <a href="https://iti.gov.eg/" target="_blank">ITI website</a><br>
-    <a href="mailto:asmaaahmedt52@gmail.com">Send email</a><br>
-    <a href="#top">Back to Top</a><br><br>
+    <div class="links">
+        <a href="https://iti.gov.eg/" target="_blank">ITI website</a>
+        <a href="mailto:asmaaahmedt52@gmail.com">Send email</a>
+        <a href="#top">Back to Top</a>
+    </div>
+    
 
     <!-- Part 6 -->
-    <table border="1">
+    <!-- <table border="1">
         <caption>My Weekly Schedule</caption>
         <tr>
             <th>Day</th>
@@ -152,10 +165,15 @@
             <td>100</td>
             <td>4.0</td>
         </tr>
-    </table>
+    </table> -->
 
     <footer>
-        <p>&copy; 2026 memo</p>
+        <!-- Part 3 -->
+        <a href="https://github.com/asmaa505" target="_blank">
+            <img src="./image/me.jpg" alt="personal photo" title="memo" width="250" height="300">
+        </a>
+
+        <p style="color:gold;">&copy; 2026 memo</p>
     </footer>
 
 </body>
