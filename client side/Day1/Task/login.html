@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- form section -->
+    <form action="./index.html" method="post" autocomplete="off" >
+        <!-- novalidate -->
+        <fieldset>
+            <legend>Contact Me</legend>
+            <input type="text" name="fullName" placeholder="enter your name" required autofocus><br>
+            <input type="password" name="password" placeholder="enter your password" required><br>
+            <input type="hidden" name="ID" value="1"><br>
+
+            <textarea name="message" cols="25" rows="10" placeholder="Write me a message"></textarea><br>
+
+            <label>choose one way to Contact</label><br>
+            <input type="radio" name="contact" id="phone" required><label for="phone">phone</label><br>
+
+            <input type="radio" name="contact" id="email" required><label for="email">email</label><br>
+
+
+            <!-- dropdown list -->
+            <select name="country" id="country">
+                <option value="EG">Egypt</option>
+                <option value="SA">Saudi Arabia</option>
+                <option value="AE">United Arab Emirates</option>
+                <option value="JO">Jordan</option>
+                <option value="MA">Morocco</option>
+                <option value="DZ">Algeria</option>
+            </select><br>
+            
+
+            <!-- file -->
+            <input type="file" name="file" multiple><br>
+
+            <!-- buttons -->
+            <input type="submit">
+            <input type="reset" placeholder="age"><br>
+
+            <!-- min-max -->
+            <input type="number" name="age" id="age" min="1" max="20" placeholder="age">
+
+        </fieldset>
+
+        
+</body>
+</html>

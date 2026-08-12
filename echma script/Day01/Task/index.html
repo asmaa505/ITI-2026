@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1
+        let arr = [10 , 20 , 30 , 40 , 50 , 60 , 70];
+
+        let ascending = [...arr].sort((a, b) => a - b);
+        let descending = [...arr].sort((a, b) => b - a);
+        console.log(ascending);
+        console.log(descending);
+
+        let largerThan50 = numbers.filter(num => num > 50);
+        console.log(largerThan50);
+
+        let maxNum = Math.max(...numbers);
+        let minNum = Math.min(...numbers);
+        console.log(maxNum);
+        console.log(minNum);
+
+
+        // 2
+        function calc(op, ...numbers) {
+            let result;
+
+            switch (op) {
+                case '+':
+                    result = 0;
+                    numbers.map(num => result += num);
+                    break;
+                case '*':
+                    result = 1;
+                    numbers.map(num => result *= num);
+                    break;
+                case '-':
+                    result = numbers[0];
+                    numbersV2 = numbers.slice(1);
+                    numbersV2.map(num  => result -= num);
+                    break;
+            }
+
+            console.log(`result of ${op} = ${result}`);
+    }
+
+    calc('+', 1 , 2 , 3 , 4);
+        
+
+    // 2.1
+    function calc(op, ...numbers) {
+        let expression = numbers.join(op);
+        let result = eval(expression);
+
+        console.log(`result of ${op} = ${result}`);
+    }
+
+    calc('+', 1 , 2 , 3 , 4);
+
+    // 2.2
+    function calc(expression) {
+        let result = eval(expression);
+        console.log(`result of ${op} = ${result}`);
+    }
+
+    calc('+', 1 , 2 , 3 , 4);
+
+
+    // 3
+    const idInput = prompt("rnter project ID...");
+    const nameInput = prompt("enter project name...");
+    const durationInput = prompt("enter project duration...");
+
+    const project = {
+        projectId: idInput,
+        projectName: nameInput,
+        duration: durationInput,
+    
+        printData: function shpwData() { console.log(
+            `
+                                ID: ${this.projectId}
+                                Name: ${this.projectName}
+                                Duration: ${this.duration}
+            `);
+        }
+};
+
+    project.printData();
+
+
+    </script>
+</body>
+</html>

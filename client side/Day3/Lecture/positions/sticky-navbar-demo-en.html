@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<title>Sticky Navbar Example</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: #f4f6f8;
+    color: #222;
+    line-height: 1.8;
+  }
+
+  /* ===== Page header ===== */
+  .page-header {
+    background: #2c3e50;
+    color: #fff;
+    padding: 30px 20px;
+    text-align: center;
+  }
+  .page-header h1 { font-size: 24px; margin-bottom: 8px; }
+  .page-header p { color: #cfd8dc; font-size: 15px; }
+
+  /* ===== Spacer before navbar (to see it's NOT stuck yet) ===== */
+  .spacer-before {
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: repeating-linear-gradient(45deg, #eef2f5, #eef2f5 20px, #e4e9ed 20px, #e4e9ed 40px);
+    font-size: 18px;
+    color: #607d8b;
+    text-align: center;
+    padding: 20px;
+  }
+
+  /* ===== The sticky navbar ===== */
+  .navbar {
+    position: sticky;
+    top: 0;
+    background: #1abc9c;
+    color: #fff;
+    padding: 16px 24px;
+    font-weight: bold;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    transition: background 0.3s;
+  }
+
+  .navbar .status {
+    font-size: 13px;
+    background: rgba(255,255,255,0.2);
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  /* Added by JS the moment the navbar actually "sticks" */
+  .navbar.is-stuck {
+    background: #16a085;
+  }
+
+  /* ===== Page content ===== */
+  .content {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  .content section {
+    background: #fff;
+    padding: 24px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+  .content h2 { color: #1abc9c; margin-bottom: 10px; font-size: 18px; }
+  .content code {
+    background: #f0f0f0;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+    color: #c0392b;
+  }
+  .filler {
+    height: 500px;
+    background: #fafafa;
+    border: 2px dashed #ddd;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+  }
+</style>
+</head>
+<body>
+
+  <div class="page-header">
+    <h1>🧭 position: sticky Navbar Example</h1>
+    <p>Scroll down and watch the green navbar float normally until it reaches the top of the screen, then it "sticks" automatically</p>
+  </div>
+
+  <div class="spacer-before">
+    ⬇️ Scroll down... the navbar hasn't stuck yet, it's just behaving like normal content
+  </div>
+
+  <nav class="navbar" id="myNavbar">
+    <span>🎓 EduCore Navbar</span>
+    <span class="status" id="statusLabel">Not stuck (Normal)</span>
+  </nav>
+
+  <div class="content">
+
+    <section>
+      <h2>What's happening?</h2>
+      <p>
+        This navbar has <code>position: sticky; top: 0;</code>.
+        From the start, it scrolls normally with the page (just like <code>relative</code>).
+        But as soon as it reaches the top of the screen (<code>top: 0</code>), it "sticks" and
+        stays fixed in place (just like <code>fixed</code>) — but only while you're still scrolling
+        inside its parent container.
+      </p>
+    </section>
+
+    <section>
+      <h2>The core CSS (no JS needed)</h2>
+      <p>The sticking behavior itself works with pure CSS:</p>
+      <p style="margin-top:8px;">
+        <code>.navbar { position: sticky; top: 0; z-index: 100; }</code>
+      </p>
+    </section>
+
+    <section>
+      <h2>sticky vs fixed — quick comparison</h2>
+      <p>
+        <code>position: fixed</code> sticks to the viewport immediately from page load, and is
+        removed from the normal flow entirely (its original space collapses).<br>
+        <code>position: sticky</code> stays part of the normal flow until it hits a threshold
+        (<code>top: 0</code> here), and only then behaves like fixed — bounded by its parent.
+      </p>
+    </section>
+
+    <section>
+      <h2>Common gotcha</h2>
+      <p>
+        <code>sticky</code> needs an explicit <code>top</code> (or <code>bottom</code>/<code>left</code>/<code>right</code>) value to work at all.
+        Also, if any parent element has <code>overflow: hidden</code> or <code>overflow: auto</code>,
+        sticky will silently stop working — this is the #1 reason students get confused.
+      </p>
+    </section>
+
+    <div class="filler">
+      Keep scrolling... the navbar above stays fixed once it "sticks," and its color changes so you can see exactly when that happens 🎯
+    </div>
+
+  </div>
+
+<script>
+  // This JS is NOT required for sticky itself to work — pure CSS handles that.
+  // We use IntersectionObserver here purely to visually show students
+  // the exact moment the navbar becomes "stuck".
+  const navbar = document.getElementById('myNavbar');
+  const statusLabel = document.getElementById('statusLabel');
+
+  const sentinel = document.createElement('div');
+  navbar.parentNode.insertBefore(sentinel, navbar);
+
+  const observer = new IntersectionObserver(
+    ([e]) => {
+      const isStuck = e.intersectionRatio < 1;
+      navbar.classList.toggle('is-stuck', isStuck);
+      statusLabel.textContent = isStuck ? '✅ Stuck now (acts like Fixed)' : 'Not stuck (Normal)';
+    },
+    { threshold: [1] }
+  );
+  observer.observe(sentinel);
+</script>
+
+</body>
+</html>

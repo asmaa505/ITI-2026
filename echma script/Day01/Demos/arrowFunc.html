@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // arrow function - lamda expression - flat function
+
+        let fun = function sum (a , b){
+            return a+b
+        }
+
+        let fun2 = (a , b)=> a+b
+        let fun3 = a => a+2
+
+        
+//---------------------------- this in arrow funcition -------------------------------
+         let obj = {
+            name : "ali",
+            age :20,
+            display : function(){
+                console.log(this);
+                console.log(this.name , this.age);
+            },
+            display2:()=>{ //ouetr scoped this 
+                console.log(this.name , this.age);
+            }
+        }        
+        obj.display()
+        obj.display2()
+
+
+    </script>
+</body>
+</html>

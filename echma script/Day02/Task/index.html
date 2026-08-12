@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+</head>
+<body>
+    <script>
+        // 1
+        class Bird {
+        #name;
+        #species;
+
+        constructor(_name, _species) {
+            this.#name = _name;       
+            this.#species = _species; 
+        }
+
+        // Getter & Setter for Name
+        get name() {
+            return this.#name;
+        }
+
+        set name(value) {
+            if (value.trim().length > 0) {this.#name = value;} 
+            else {console.log("Error...");}
+        }
+
+        getInfo() {
+            console.log(`Name: ${this.name} | Species: ${this.species}`);
+        }
+    }
+
+        class Duck extends Bird {
+            constructor(name, species, canFly = true) {
+                super(name, species);
+                this.canFly = canFly;
+            }
+
+            // polymerphysm
+            getInfo() {
+                console.log(`Name: ${this.name} \n Species: ${this.species} \n ${this.canFly}`);
+            }
+
+    }
+
+    let duck1 = new Duck("tota" , "srf" , false);
+    duck1.getInfo();
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Person {
+        //private members
+        #id;
+        #name;
+        #salary;
+        //encasulation
+        constructor(_id, _name, _salary) {
+          // this.id=_id
+          // this.name=_name
+          // this.salary=_salary // public members access global
+          this.#id = _id;
+          this.Name = _name;
+          this.#salary = _salary;
+        }
+
+        print() {
+          console.log(this.#id, this.#name, this.#salary);
+        }
+
+        // getName(){
+        //     return this.#name
+        // }
+        // setName(_name){
+        //     if (_name.trim().length<3) {
+        //         return
+        //     }
+        //     this.#name=_name
+        // }
+
+        set Name(_name) {
+          if (_name.trim().length < 3) {
+            return;
+          }
+          this.#name = _name;
+        }
+
+        get Name(){
+            return this.#name
+        }
+      }
+
+      let operationEmp = new Person(2020, "alii", 5000);
+
+    //   operationEmp.Name="mm"
+      console.log(operationEmp.Name);
+      
+    </script>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         class Person {
+        #id;
+        #name;
+        #salary;
+        constructor(_id, _name, _salary) {
+          if(new.target.name=="Person"){
+            throw Error("you can`t make an object caus it is  abstract class")
+          }
+          this.#id = _id;
+          this.#name = _name;
+          this.#salary = _salary;
+        }
+
+        print() {
+          console.log(this.#id, this.#name, this.#salary);
+        }
+
+        set Name(_name) {
+          if (_name.trim().length < 3) {
+            return;
+          }
+          this.#name = _name;
+        }
+        get Name(){
+            return this.#name
+        }
+      }
+
+
+
+    class Fintech extends Person{
+        #age
+        #dep
+        constructor(_name,_id , _salary , _age , _dep){
+            super(_id , _name , _salary)
+            this.#age=_age
+            this.#dep=_dep
+        }
+
+        //polymarphism
+        print(){
+          super.print()
+          console.log(`age : ${this.#age}  dep : ${this.#dep}`);
+          
+        }
+
+    }
+
+    let fintechEmp = new Fintech("mohamed" , 2000 , 20000 ,25,"fintech" )
+    fintechEmp.print()
+
+    let p = new Person(20 , "ali" , 5000)
+    p.print()
+
+
+
+
+
+    </script>
+</body>
+</html>
