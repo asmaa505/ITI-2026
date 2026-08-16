@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //single threaded
+
+        // console.log("frist"); //sync
+
+        // setInterval(function(){ //async
+        //     console.log("second");
+        // },2000)
+
+        // for (let i = 0; i < 10e10; i++) {
+            
+            
+        // }
+
+
+        console.log("frsit");
+
+        setTimeout(function (){
+            console.log("second");
+        },3000)
+
+        setTimeout(function (){
+            console.log("third");
+        },2000)
+
+        console.log("fourth");
+
+
+        function greet (){
+            console.log("hii");
+            
+        }
+
+        for (let i = 0; i < 1000; i++) {
+            greet()
+            
+        }
+
+        //-- optmizer chashing -->console.log("hii");
+
+
+
+        // parsing tokens -> abstract syntax tree ->interpretting ->optmizer ->mashine code                 --->"v8"
+        
+        
+
+       
+        
+        
+    </script>
+</body>
+</html>

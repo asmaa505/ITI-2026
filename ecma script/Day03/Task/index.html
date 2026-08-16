@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 3</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-6">
+
+    <div id="users" class="flex gap-2 mb-4"></div>
+    <hr><hr>
+    <div id="info"></div>
+
+    <script>
+        let usersDiv = document.getElementById("users");
+        let infoDiv = document.getElementById("info");
+
+        async function getUsers() {
+            let response = await fetch("https://jsonplaceholder.typicode.com/users");
+            let users = await response.json();
+
+            for (let i = 0; i < users.length; i++) {
+                let button = document.createElement("button");
+                button.innerText = users[i].name;
+
+                button.className = "border border-gray-300 bg-pink-50 hover:bg-pink-200 px-3 py-1 text-sm rounded";
+
+                button.onclick = function () {
+                    showUser(users[i]);
+                };
+                usersDiv.append(button);
+            }
+        }
+
+        function showUser(user) {
+            infoDiv.innerHTML = `
+                <p>ID: ${user.id}</p>
+                <p>Name: ${user.name}</p>
+                <p>Username: ${user.username}</p>
+                <p>Email: ${user.email}</p>
+                <p>Street: ${user.address.street}</p>
+                <p>Suite: ${user.address.suite}</p>
+                <p>City: ${user.address.city}</p>
+                <p>Zipcode: ${user.address.zipcode}</p>
+                <p>Lat: ${user.address.geo.lat}</p>
+                <p>Lng: ${user.address.geo.lng}</p>
+            `;
+        }
+
+        getUsers();
+    </script>
+
+</body>
+</html>

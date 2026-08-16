@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+    //   function mokhtar(){
+    //       setTimeout(function(){
+    //           console.log("mokhtar here");
+    //           return 10
+    //       },2000)
+    //   }
+
+    //    function youssef(passcode){
+    //       setTimeout(function(){
+    //           console.log("youssef here");
+    //           console.log(passcode);
+    //           return 20
+    //       },3000)
+    //   }
+
+    //    function ewis(passcode){
+    //       setTimeout(function(){
+    //           console.log("Ewis here");
+    //           console.log(passcode);
+    //           return 30
+    //       },2500)
+    //   }
+
+    //     function ahmed(passcode){
+    //       setTimeout(function(){
+    //           console.log("Ewis here");
+    //           console.log(passcode);
+    //           return 40
+    //       },4000)
+    //   }
+
+    //   let passcodeMokhtar = mokhtar()
+    //   let passcodeYoussef = youssef(passcodeMokhtar)
+    //   let passcodeEewis = ewis(passcodeYoussef)
+    //   let passcodeAhmed =ahmed(passcodeEewis)
+
+    //   console.log(passcodeMokhtar , passcodeYoussef ,passcodeEewis,passcodeAhmed );
+
+      //----------------------------------------------------------------------------------------------------------------
+    //    function mokhtar(callBack){
+    //       setTimeout(function(){
+    //           console.log("mokhtar here");
+    //           callBack(10)
+    //       },2000)
+    //   }
+
+    //    function youssef(passcode , callBack){
+    //       setTimeout(function(){
+    //           console.log("youssef here");
+    //           console.log(passcode);
+    //           callBack(20)
+    //       },3000)
+    //   }
+
+    //    function ewis(passcode,callBack){
+    //       setTimeout(function(){
+    //           console.log("Ewis here");
+    //           console.log(passcode);
+    //           callBack(30)
+    //       },2500)
+    //   }
+
+    //     function ahmed(passcode ){
+    //       setTimeout(function(){
+    //           console.log("ahmed here");
+    //           console.log(passcode);
+    //       },4000)
+    //   }
+
+    // //   -------------------------call back helll--------------------------------
+    //   mokhtar(function(passcodeMokhtar){
+    //       youssef(passcodeMokhtar , function(passcodeYoussef){
+    //           ewis(passcodeYoussef , function(passcodeEewis){
+    //               ahmed(passcodeEewis)
+    //           })
+    //       })
+    //   })
+
+      //------------------------------------------------------------------promsis--------------------------------------------------------------
+      //  pending - fulfied - rejected
+
+      function mokhtar() {
+        return new Promise(function (resolve, reject) {
+          setTimeout(function () {
+            console.log("mokhtar here");
+            resolve(10);
+          }, 2000);
+        });
+      }
+
+      function youssef(passcode) {
+        return new Promise(function (resolve, reject) {
+            let succse =false
+          setTimeout(function () {
+            console.log("youssef here");
+            console.log(passcode);
+            if (succse) {
+                resolve(20);
+            }else{
+                reject("youssef is dowen")
+            }
+            
+          }, 3000);
+        });
+      }
+
+      function ewis(passcode, callBack) {
+        return new Promise(function (resolve, reject) {
+          setTimeout(function () {
+            console.log("ewis here");
+            console.log(passcode);
+            resolve(30);
+          }, 3000);
+        });
+      }
+
+      function ahmed(passcode) {
+        return new Promise(function (resolve, reject) {
+          setTimeout(function () {
+            console.log("ahmed here");
+            console.log(passcode);
+            resolve(40);
+          }, 3000);
+        });
+      }
+
+      //-----------------------------promis chaining ------------------------------------------
+    //   mokhtar().then((passcodeMokhtar)=>youssef(passcodeMokhtar))
+    //   .then((youssefPasscode)=>ewis(youssefPasscode))
+    //   .then((passcodeEwis)=>ahmed(passcodeEwis)).catch((e)=>console.log(e)).finally(()=>console.log("finished"))
+
+    //   async function run() {
+    //     let passcodeMokhtar = await mokhtar();
+    //     let passcodeYoussef = await youssef(passcodeMokhtar);
+    //     let passcodeEewis = await ewis(passcodeYoussef);
+    //     let passcodeAhmed = await ahmed(passcodeEewis);
+    //   }
+
+    //   run()
+    </script>
+  </body>
+</html>
