@@ -1,0 +1,179 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* 9. Google Font */
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    background-color: #fff;
+    padding-bottom: 50px;
+}
+
+/* 1. Navigation Bar */
+nav {
+    border-bottom: 2px solid #e74c3c;
+    padding: 20px 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 2. Hero Section */
+.hero {
+    margin: 40px 0;
+}
+
+.hero h1 {
+    color: #e74c3c;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-weight: normal;
+    /* 7. Keyframes animation applied */
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.hero p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    color: #222;
+}
+
+.hero-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 12px 35px;
+    border-radius: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    /* 5. Smooth Transition */
+    transition: background-color 0.3s ease;
+}
+
+.hero-btn:hover {
+    background-color: #c0392b;
+}
+
+/* 7. CSS @keyframes Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 3. Border-radius & Box-shadow to Cards */
+.cards-section {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.card {
+    flex: 1;
+    border: 2px solid #e74c3c;
+    border-radius: 15px;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* 5. Smooth Transition */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff;
+}
+
+/* 4. On card hover: scale, rotate slightly and increase shadow */
+.card:hover {
+    transform: scale(1.03) rotate(1deg);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.icon-circle {
+    width: 70px;
+    height: 70px;
+    background-color: #e74c3c;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    /* 5. Smooth Transition */
+    transition: transform 0.5s ease;
+}
+
+/* 6. Rotate icon on hover */
+.card:hover .icon-circle,
+.feature-card:hover .icon-circle {
+    transform: rotate(360deg);
+}
+
+.card h3, .feature-card p {
+    font-weight: normal;
+    font-size: 0.95rem;
+}
+
+.features-section {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 50px;
+}
+
+.feature-card {
+    flex: 1;
+    border: 1px solid #777;
+    border-radius: 12px;
+    padding: 25px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fafafa;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 8. 'Latest News' section using column-count: 2 */
+.news-section {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.news-section h2 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.news-content {
+    column-count: 2;
+    column-gap: 30px;
+    line-height: 1.6;
+    color: #555;
+}
