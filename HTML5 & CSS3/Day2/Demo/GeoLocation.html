@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Html GeoLocation</h1>
+    <p>Click at this button to get your coordinates</p>
+    <button onclick="goPosition()">Try it</button>
+
+     <p id="Coordinates"></p>  <!--  longitude latitude -->
+
+
+     <script>
+        const x = document.getElementById("Coordinates")
+        var latitude ;
+        var longitude;
+        function GetLocation()
+        {
+            if(window.navigator.geolocation)
+        {
+            navigator.geolocation.getCurrentPosition(success,error)
+        }
+        }
+        function success(position)
+        {
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
+
+             x.innerHTML = "latitude" + position.coords.latitude + "<br> longitude" + position.coords.longitude
+              var url = "http://maps.google.com/maps?q=" + latitude + ",+" + longitude
+            alert(url);
+
+            window.open(url,'_blank')
+
+        }
+        function error(position)
+        {
+             alert("error,no position available");
+        }
+
+        function goPosition()
+        {
+            GetLocation();
+           
+        }
+     </script>
+</body>
+
+</html>
