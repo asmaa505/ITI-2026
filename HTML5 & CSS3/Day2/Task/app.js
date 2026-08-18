@@ -3,7 +3,6 @@ function initMap() {
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
-        // نجاح جلب الموقع
         function (position) {
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
