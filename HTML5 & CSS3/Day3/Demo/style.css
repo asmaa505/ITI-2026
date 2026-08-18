@@ -1,0 +1,64 @@
+body
+{
+    margin: 0;
+}
+.box
+{
+    width: 150px;
+    height: 150px;
+}
+.box:nth-child(odd)
+{
+    background-color: red;
+}
+.box:nth-child(even)
+{
+    background-color: blue;
+}
+
+
+.container
+{
+    background-color: yellow;
+    display: flex;
+     /* flex-direction: row;
+    flex-wrap: nowrap; */ 
+    /* flex-wrap: wrap; */
+
+    flex-flow: row wrap;   /* flex direction + flex-wrap*/
+
+    /* justify-content: start ;   works on main axis */
+    justify-content: center;
+    /* justify-content: space-between;  spaces between elements */
+    /* justify-content: space-evenly;  spaces between elements and outside elements with equal pixels */
+    /* justify-content: space-around;  spaces between elements and outside elements(half inner space)*/
+    /* justify-content: flex-end; */
+
+    /* flex-direction: column; */
+    /* flex-direction: row-reverse;
+    flex-direction: column-reverse;  its container must have height */  
+    /* flex-direction: column;
+    justify-content: flex-start ; */
+
+    /* height: 600px; */
+
+    /* gap: 12px; */
+
+     /* align-items: flex-start; */ 
+     /* align-items: flex-end; */
+    /* align-items: center; */
+
+
+     /* align-content:flex-start ;  */
+    /* align-content: space-between;
+    align-content: space-evenly;
+    align-content: space-around; */ 
+
+
+
+
+    
+
+
+
+}

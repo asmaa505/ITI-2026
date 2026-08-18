@@ -3,33 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
+    <title>Audio Player</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f9;
+        }
+
+        .player-container {
+            width: 350px;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .top-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cover-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            background-color: #ddd;
+        }
+
+        .controls {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .controls input[type="range"] {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .button-group button {
+            padding: 6px 12px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .button-group button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <!-- 2 -->
+
     <div class="player-container">
+        <audio id="audio-player" src="audio/88qX13Y4.mp3"></audio>
+
         <div class="top-section">
-            <img src="img.jpg"  class="cover-img">
+            <img src="img.jpg" class="cover-img" alt="Cover">
             <div class="controls">
-                <input type="range" min="0" max="100" value="20">
+                <input type="range" id="progress-bar" min="0" max="100" value="0">
+                
                 <div class="button-group">
                     <div>
-                        <button>play</button>
-                        <button>pause</button>
-                        <button>stop</button>
+                        <button id="play-btn">play</button>
+                        <button id="pause-btn">pause</button>
+                        <button id="stop-btn">stop</button>
                     </div>
-                    <input type="range" min="0" max="100" value="80">
+                    <input type="range" id="volume-bar" min="0" max="1" step="0.01" value="0.8" style="width: 80px;">
                 </div>
             </div>
         </div>
-
-        <ul class="playlist">
-            <li>Super Mario</li>
-            <li>Lose you to find me</li>
-            <li>Bad Guy</li>
-            <li>Mel Bedaya</li>
-        </ul>
     </div>
+
+    <script>
+        // العناصر الرئيسية
+        const audio = document.getElementById("audio-player");
+        const playBtn = document.getElementById("play-btn");
+        const pauseBtn = document.getElementById("pause-btn");
+        const stopBtn = document.getElementById("stop-btn");
+        const progressBar = document.getElementById("progress-bar");
+        const volumeBar = document.getElementById("volume-bar");
+
+        playBtn.addEventListener("click", () => {
+            audio.play();
+        });
+
+        pauseBtn.addEventListener("click", () => {
+            audio.pause();
+        });
+
+        stopBtn.addEventListener("click", () => {
+            audio.pause();
+            audio.currentTime = 0; 
+            progressBar.value = 0;
+        });
+
+        audio.addEventListener("timeupdate", () => {
+            if (audio.duration) {
+                const progressPercent = (audio.currentTime / audio.duration) * 100;
+                progressBar.value = progressPercent;
+            }
+        });
+
+        progressBar.addEventListener("input", () => {
+            if (audio.duration) {
+                const seekTime = (progressBar.value / 100) * audio.duration;
+                audio.currentTime = seekTime;
+            }
+        });
+
+        volumeBar.addEventListener("input", (e) => {
+            audio.volume = e.target.value;
+        });
+    </script>
+
 </body>
 </html>

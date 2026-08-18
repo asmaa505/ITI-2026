@@ -1,0 +1,29 @@
+body
+{
+    background-color: red;
+}
+
+/*from 0 to 500px*/
+@media screen and (max-width:500px)
+{
+    body{
+        background-color: blue;
+    }
+
+}
+/*from 800 to infinity*/
+@media screen and (min-width:800px)
+{
+    body{
+        background-color: pink;
+    }
+
+}
+/*start from 500 to 800*/
+@media screen and (min-width:500px) and (max-width:800px)
+{
+    body{
+        background-color: green;
+    }
+
+}

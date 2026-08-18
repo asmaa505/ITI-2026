@@ -1,0 +1,45 @@
+nav
+{
+    background-color: lightblue;
+    padding: 4px 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo img
+{
+    width: 100%;
+}
+.logo
+{
+    width: 100px;
+}
+.links
+{
+    display: flex;
+    gap: 22px;
+}
+.links .link
+{
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.links .link:hover
+{
+    text-decoration: underline;
+    color: red;
+    transition: 0.5s;
+}
+
+.links .button
+{
+    background-color: lightcoral;
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+}

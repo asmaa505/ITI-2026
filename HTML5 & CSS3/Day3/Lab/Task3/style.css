@@ -1,0 +1,167 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #f8fafc;
+    color: #1e293b;
+}
+
+  /* Header & Footer */
+.main-header, .main-footer {
+    background-color: #1e293b; 
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+}
+
+.main-header h1 {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.main-footer p {
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+  /* Layout Grid/Flex */
+.layout-container {
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+  /* Navigation Sidebar */
+.sidebar-nav {
+    background-color: #0f766e; 
+    border-radius: 8px;
+    padding: 20px 15px;
+    flex: 1;
+    min-width: 150px;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.sidebar-nav a {
+    color: #ccfbf1;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.2s ease;
+}
+
+.sidebar-nav a:hover {
+    color: #ffffff;
+}
+
+  /* Main Content Posts */
+.content-area {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.post {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.post h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.post p {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+  /* Color Themes for Posts */
+.post-coral {
+    background-color: #ea580c; 
+    color: #ffffff;
+}
+
+.post-cyan {
+    background-color: #0284c7; 
+    color: #ffffff;
+}
+
+.post-yellow {
+    background-color: #f59e0b; 
+    color: #ffffff;
+}
+
+  /* About Me Sidebar */
+.sidebar-about {
+    background-color: #334155; 
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    flex: 1;
+    min-width: 180px;
+}
+
+.sidebar-about h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #38bdf8;
+}
+
+.sidebar-about p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #e2e8f0;
+}
+
+  /* Responsive Breakpoints */
+@media (max-width: 768px) {
+    .layout-container {
+        flex-wrap: wrap;
+    }
+
+    .sidebar-nav {
+        flex: 0 0 100%;
+    }
+
+    .sidebar-nav ul {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .content-area {
+        flex: 2;
+    }
+
+    .sidebar-about {
+        flex: 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .layout-container {
+        flex-direction: column;
+    }
+
+    .sidebar-nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sidebar-about {
+        width: 100%;
+    }
+}
