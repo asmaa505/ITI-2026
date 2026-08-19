@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - ShopStore</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        .carousel-item img {
+            height: 320px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <div class="container my-4" style="max-width: 720px;">
+        <!-- Image Carousel -->
+        <div id="productCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="2"></button>
+            </div>
+            <div class="carousel-inner rounded">
+                <div class="carousel-item active">
+                    <img src="./images/img1.jpg" class="d-block w-100" alt="Nike Air Max">
+                </div>
+                <div class="carousel-item">
+                    <img src="./images/img2.jpg" class="d-block w-100" alt="Nike Air Max Side">
+                </div>
+                <div class="carousel-item">
+                    <img src="./images/img3.jpg" class="d-block w-100" alt="Nike Air Max White">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+
+        <!-- Product Header -->
+        <div class="mb-3">
+            <span class="badge bg-success mb-2">In Stock</span>
+            <h2 class="fw-bold mb-1">Nike Air Max</h2>
+            <p class="text-muted small mb-2">Premium running shoes designed for comfort and everyday performance.</p>
+            <div class="text-secondary small mb-3">4.8 (120 Reviews)</div>
+            <h3 class="fw-bold mb-3">$120</h3>
+            <p class="text-secondary small">
+                Experience maximum comfort and modern design with the Nike Air Max. Perfect for running, walking, and everyday use.
+            </p>
+        </div>
+
+        <!-- Options Form -->
+        <form class="mb-4">
+            <!-- Color Selection -->
+            <div class="mb-3">
+                <label class="form-label fw-semibold small">Select Color</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="colorRadio" id="blackColor" checked>
+                    <label class="form-check-label small" for="blackColor">Black</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="colorRadio" id="whiteColor">
+                    <label class="form-check-label small" for="whiteColor">White</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="colorRadio" id="redColor">
+                    <label class="form-check-label small" for="redColor">Red</label>
+                </div>
+            </div>
+
+            <!-- Size Selection -->
+            <div class="mb-3">
+                <label for="sizeSelect" class="form-label fw-semibold small">Select Size</label>
+                <select class="form-select form-select-sm" id="sizeSelect">
+                    <option selected disabled>Choose size</option>
+                    <option value="40">40</option>
+                    <option value="41">41</option>
+                    <option value="42">42</option>
+                    <option value="43">43</option>
+                </select>
+            </div>
+
+            <!-- Quantity -->
+            <div class="mb-3">
+                <label class="form-label fw-semibold small">Quantity</label>
+                <div class="input-group input-group-sm">
+                    <button class="btn btn-outline-secondary" type="button">-</button>
+                    <input type="text" class="form-control text-center" value="1">
+                    <button class="btn btn-outline-secondary" type="button">+</button>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="d-grid gap-2 mb-3">
+                <button class="btn btn-primary" type="button">Add To Cart</button>
+                <button class="btn btn-outline-secondary" type="button">Add To Wishlist</button>
+            </div>
+        </form>
+
+        <!-- Availability Alert -->
+        <div class="alert alert-success border-0 small py-2 mb-4" role="alert">
+            Product is available and ready to order.
+        </div>
+
+        <!-- Accordion Section -->
+        <div class="accordion mb-5" id="productAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button bg-light-subtle text-primary small py-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDescription">
+                        Product Description
+                    </button>
+                </h2>
+                <div id="collapseDescription" class="accordion-collapse collapse show" data-bs-parent="#productAccordion">
+                    <div class="accordion-body small text-muted">
+                        High quality materials, mesh upper for breathability, and durable rubber outsole for maximum traction.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed bg-light-subtle small py-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseShipping">
+                        Shipping Information
+                    </button>
+                </h2>
+                <div id="collapseShipping" class="accordion-collapse collapse" data-bs-parent="#productAccordion">
+                    <div class="accordion-body small text-muted">
+                        Free shipping on orders over $50. Standard delivery takes 3-5 business days.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Suggested Products -->
+        <h4 class="fw-bold mb-3">Suggested Products</h4>
+
+        <!-- Card 1 -->
+        <div class="card mb-4 shadow-sm border-light">
+            <img src="./images/img1.jpg" class="card-img-top" alt="Nike Air Max Red">
+            <div class="card-body">
+                <span class="badge bg-primary mb-2">New</span>
+                <h6 class="card-title fw-bold mb-1">Nike Air Max</h6>
+                <p class="card-text text-muted small mb-2">Comfortable sports shoes for everyday use.</p>
+                <p class="fw-bold mb-2">$120</p>
+                <button class="btn btn-dark btn-sm">View Product</button>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card mb-4 shadow-sm border-light">
+            <img src="./images/img3.jpg" class="card-img-top" alt="Adidas Runner White">
+            <div class="card-body">
+                <span class="badge bg-danger mb-2">Sale</span>
+                <h6 class="card-title fw-bold mb-1">Adidas Runner</h6>
+                <p class="card-text text-muted small mb-2">Lightweight running shoes with a modern design.</p>
+                <p class="fw-bold mb-2">$95</p>
+                <button class="btn btn-outline-secondary btn-sm">View Product</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p class="mb-0 small">&copy; 2026 ShopStore. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
