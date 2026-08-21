@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Js Lab One</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    
+    <style>
+        .less {
+        border: 2px solid red !important;
+        }
+        .more {
+        border: 2px solid green !important;
+        }
+    </style>
+    </head>
+    <body class="bg-light">
+
+    <div id="app" class="container my-5">
+        <h1 class="text-center mb-4">Vue Js Lab One</h1>
+
+        <!-- 1 & 2: Display books names as list (ul) with author as title -->
+        <div class="mb-5">
+        <h3>Books List</h3>
+        <ul>
+            <li v-for="book in books" :key="book.ISBN" :title="book.author">
+            {{ book.Name }}
+            </li>
+        </ul>
+        </div>
+
+        <!-- 3: Bootstrap Cards Grid -->
+        <h3>Books Cards</h3>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col" v-for="book in books" :key="book.ISBN">
+            
+            <!-- Condition for class less or more -->
+            <div class="card h-100 p-3" :class="book.numberOfPages < 50 ? 'less' : 'more'">
+            
+            <!-- Book Image -->
+            <img :src="book.Image" class="card-img-top mb-3" style="height: 200px; object-fit: cover;" alt="Book Image" />
+
+            <!-- Card Content Layout -->
+            <div class="row g-2 text-center text-white">
+                <div class="col-6">
+                <div class="bg-primary p-2 rounded">{{ book.Category }}</div>
+                </div>
+                <div class="col-6">
+                <div class="bg-primary p-2 rounded">{{ book.author }}</div>
+                </div>
+                <div class="col-6">
+                <div class="bg-primary p-2 rounded">{{ book.numberOfPages }} Pages</div>
+                </div>
+                <div class="col-6">
+                <div class="bg-primary p-2 rounded">${{ book.price }}</div>
+                </div>
+                <div class="col-6">
+                <div class="bg-primary p-2 rounded">ISBN: {{ book.ISBN }}</div>
+                </div>
+                <div class="col-6">
+                <button class="btn btn-primary w-100" @click="addBook">Add To List</button>
+                </div>
+            </div>
+
+            </div>
+
+        </div>
+        </div>
+    </div>
+
+    <!-- Vue 3 CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+    const { createApp } = Vue;
+
+    createApp({
+        data() {
+            return {
+            books: [
+                {
+                ISBN: '978-1',
+                Name: 'Clean Code',
+                Category: 'Programming',
+                Image: 'https://picsum.photos/300/200?random=1',
+                numberOfPages: 450,
+                author: 'Robert C. Martin',
+                price: 40
+                },
+                {
+                ISBN: '978-2',
+                Name: 'Short Story',
+                Category: 'Fiction',
+                Image: 'https://picsum.photos/300/200?random=2',
+                numberOfPages: 30,
+                author: 'John Doe',
+                price: 15
+                },
+                {
+                ISBN: '978-3',
+                Name: 'Vue.js Basics',
+                Category: 'Web Dev',
+                Image: 'https://picsum.photos/300/200?random=3',
+                numberOfPages: 120,
+                author: 'Evan You',
+                price: 25
+                }
+            ]
+            };
+        },
+        methods: {
+            addBook() {
+            const newBook = {
+                ISBN: '978-' + (this.books.length + 1),
+                Name: 'New Book ' + (this.books.length + 1),
+                Category: 'General',
+                Image: 'https://picsum.photos/300/200?random=' + (this.books.length + 1),
+                numberOfPages: Math.floor(Math.random() * 100), // Random pages to test less/more class
+                author: 'Author Name',
+                price: 20
+            };
+            this.books.push(newBook);
+            }
+        }
+        }).mount('#app');
+</script>
+
+</body>
+</html>

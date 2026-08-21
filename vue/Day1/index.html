@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Vue.js 1</title>
+</head>
+<body>
+    
+    <div id="div1"> 
+        <H2>Welcome {{name}}... </H2>
+        <p> you age is: {{age}} </p>
+        <p>your first skill is: {{skills[0]}} </p>
+        <p>you are: {{isSubscribe? 'subscribed' : 'not subscribed' }} </p>
+        <p> the mark of {{completedTests[0].testName}} is {{completedTests[0].mark}} </p>
+        <p> {{sayMyName()}} </p>
+        <p> {{ageInDays()}} </p>
+        <p> {{date}} </p>
+        <button @click="showNewDate">show new date</button>
+
+    </div>
+
+    <script src="./vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el: '#div1',
+            data : {
+                name : "Asmaa",
+                age  : 21,
+                skills : ["html" , "css" , "js" , "vue.js"],
+                isSubscribe: false,
+                date : "today",
+                completedTests:[
+                {
+                    testName : "first test",
+                    mark : '80%'
+                },
+                {
+                    testName : "second test",
+                    mark : 90
+                },
+                {
+                    testName : "third test",
+                    mark : 100
+                }
+            ]
+            },
+
+            // methods
+            methods :{
+                sayMyName : function() {
+                    return this.name;
+                },
+                ageInDays : function(){
+                    return  'your age in days: ' + this.age * 365;
+                },
+                showNewDate : function(){
+                    return this.date =  Date();
+                }
+            }
+            
+        })
+    </script>
+</body>
+</html>
