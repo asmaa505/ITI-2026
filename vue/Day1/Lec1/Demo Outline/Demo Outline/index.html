@@ -1,0 +1,335 @@
+<!-- ===================================================== -->
+<!-- Vue.js Installation -->
+<!--
+✔ Install Vue using CDN
+✔ Explain why we need Vue
+✔ createApp()
+✔ mount()
+✔ Connect Vue with HTML
+-->
+<!-- ===================================================== -->
+
+<!-- ===================================================== -->
+<!-- Reactive Data -->
+<!--
+✔ data() must return an object
+✔ Every property becomes reactive
+✔ Arrow function & ES6 Method syntax
+✔ Access data inside template
+✔ Access data using this inside methods
+-->
+<!-- ===================================================== -->
+
+<!-- ===================================================== -->
+<!-- Interpolation -->
+<!--
+✔ {{ }}
+✔ Display reactive data
+✔ Expressions only
+✔ Auto update when data changes
+-->
+<!-- ===================================================== -->
+
+<!-- ===================================================== -->
+<!-- v-bind -->
+<!--
+one way binding
+✔ Bind HTML attributes
+✔ Dynamic values
+✔ Shorthand (:) colon
+✔ Example: title, src, href
+-->
+<!-- ===================================================== -->
+
+<!-- ===================================================== -->
+<!-- v-text -->
+<!--
+✔ Alternative to interpolation
+✔ Replaces element content
+✔ Difference between v-text and {{ }}
+-->
+<!-- ===================================================== -->
+
+<!-- ===================================================== -->
+<!-- v-html -->
+<!--
+✔ Render HTML
+✔ Difference from interpolation
+✔ XSS warning
+✔ Use only with trusted content
+-->
+<!-- ===================================================== -->
+
+<!-- ===================================================== -->
+<!-- Conditional Rendering -->
+<!--
+✔ v-if
+✔ v-else-if
+✔ v-else
+✔ Element is created/removed from DOM
+-->
+<!-- ===================================================== -->
+
+<!-- ===================================================== -->
+<!-- Conditional Display -->
+<!--
+✔ v-show
+✔ Uses CSS display
+✔ Element stays in DOM
+✔ Compare v-show vs v-if
+-->
+<!-- ===================================================== -->
+
+<!-- ===================================================== -->
+<!-- Event Handling -->
+<!--
+✔ v-on:click , v-on:keyup , v-on:keydown
+✔ @ shorthand @click , @keyup , @keydown
+✔ Call methods
+✔ Access event object later
+-->
+<!-- ===================================================== -->
+
+<!-- ===================================================== -->
+<!-- Form Handling -->
+<!--
+✔ One-way binding
+✔ Two-way binding
+✔ v-model
+<input type='text' v-model='name'>
+[v-bind+ v-on]
+<input type='text' v-bind:value="name" @input='name=$event.target.value'>
+✔ Compare v-bind:value vs v-model
+-->
+<!-- ===================================================== -->
+
+<!-- ===================================================== -->
+<!-- v-model -->
+<!--
+✔ Two-way data binding
+✔ Sync UI with data
+✔ Sync data with UI
+-->
+<!-- ===================================================== -->
+
+<!-- ===================================================== -->
+<!-- List Rendering -->
+<!--
+✔ v-for with number
+✔ v-for with array
+✔ Index
+✔ Object iteration later
+-->
+<!-- ===================================================== -->
+
+<!-- ===================================================== -->
+<!-- Key Attribute -->
+<!--
+✔ Why :key is important
+✔ Virtual DOM optimization
+✔ Preserve input state
+✔ Never use index if unique id exists
+-->
+<!-- ===================================================== -->
+
+<!-- ===================================================== -->
+<!-- Array Reordering Demo -->
+<!--
+✔ Shuffle array
+✔ Show why key matters
+✔ Observe DOM updates
+-->
+<!-- ===================================================== -->
+
+<!-- ===================================================== -->
+<!-- Custom Directives -->
+<!--
+✔ What is Custom Directive?
+✔ Difference between Built-in Directives and Custom Directives
+✔ Register Global Directive
+✔ Register Local Directive
+✔ Directive Lifecycle Hooks
+✔ mounted()
+✔ updated()
+✔ Passing Value to Directive
+✔ Passing Arguments (:arg)
+✔ Using Modifiers
+✔ Real Examples:
+    • v-focus
+    • v-color
+    • v-font-size
+-->
+<!-- ===================================================== -->
+ 
+<!-- ===================================================== -->
+<!-- Methods --> 
+<!--
+✔ Store functions
+✔ Access data using this
+✔ Trigger from events
+-->
+<!-- ===================================================== -->
+
+<!-- ===================================================== -->
+<!-- v-model.number -->
+<!--
+✔ Convert input to Number
+✔ typeof comparison
+✔ Avoid string concatenation
+-->
+<!-- ===================================================== -->
+
+<!-- ===================================================== -->
+<!-- v-model.lazy -->
+<!--
+✔ Update on change event
+✔ Update after blur or Enter
+✔ Compare with default behavior
+-->
+<!-- ===================================================== -->
+
+<!-- ===================================================== -->
+<!-- v-model.trim -->
+<!--
+✔ Remove leading spaces
+✔ Remove trailing spaces
+✔ Keep spaces inside text
+-->
+<!-- ===================================================== -->
+
+<!-- ===================================================== -->
+<!-- Event Modifiers -->
+<!--
+✔ Cleaner event handling
+✔ Reduce manual JavaScript code
+-->
+<!-- ===================================================== -->
+
+<!-- stop -->
+<!--
+✔ stopPropagation()
+✔ Prevent event bubbling
+-->
+
+<!-- prevent -->
+<!--
+✔ preventDefault()
+✔ Prevent default browser behavior
+-->
+
+<!-- once -->
+<!--
+✔ Execute only once
+-->
+
+<!-- ctrl -->
+<!--
+✔ Trigger only with Ctrl key + click
+-->
+
+<!-- meta -->
+<!--
+✔ Trigger only with Meta key
+✔ Windows key / Command key
+-->
+
+<!-- space -->
+<!--
+✔ Trigger on Space key
+-->
+
+<!-- delete -->
+<!--
+✔ Trigger on Delete
+✔ Trigger on Backspace
+-->
+
+<!-- ===================================================== -->
+<!-- Computed Properties -->
+<!--
+✔ Derived reactive values
+✔ Cached
+✔ Recalculate only when dependencies change
+✔ Compare with methods
+-->
+<!-- ===================================================== -->
+
+<!-- ===================================================== -->
+<!-- Computed Getter / Setter -->
+<!--
+✔ get()
+✔ set()
+✔ Will be explained in next lecture
+-->
+<!-- ===================================================== -->
+
+<!-- ===================================================== -->
+<!-- Event Handling -->
+<!--
+✔ v-on directive
+✔ @ shorthand
+✔ Call method by reference
+✔ Call method with ()
+✔ Pass arguments
+✔ Pass $event object
+✔ Access event.target
+-->
+<!-- ===================================================== -->
+
+<!-- ===================================================== -->
+<!-- Calling Methods -->
+<!--
+✔ Call method from event
+✔ Call method inside interpolation
+✔ Difference between event call and interpolation
+✔ Method executes on every render
+-->
+<!-- ===================================================== -->
+
+<!-- ===================================================== -->
+<!-- Form Handling -->
+<!--
+✔ v-model
+✔ Two-way Data Binding
+✔ Bind input
+✔ Bind textarea
+✔ Bind checkbox
+✔ true-value / false-value
+✔ Bind multiple checkboxes
+✔ Bind radio buttons
+✔ Bind select
+-->
+<!-- ===================================================== -->
+
+<!-- ===================================================== -->
+<!-- Form Demo -->
+<!--
+✔ Display entered data
+✔ Toggle between Form and Preview
+✔ v-if
+✔ v-for
+-->
+
+// =====================================================
+// data()
+// -----------------------------------------------------
+// ✔ Reactive state
+// ✔ Return an object
+// ✔ Used by template, methods and computed
+// =====================================================
+
+// =====================================================
+// methods
+// -----------------------------------------------------
+// ✔ Event handlers
+// ✔ Business logic
+// ✔ Access reactive data using this
+// =====================================================
+
+// =====================================================
+// computed
+// -----------------------------------------------------
+// ✔ Cached values
+// ✔ Depends on reactive data
+// ✔ Better than methods for derived values
+// =====================================================

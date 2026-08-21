@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+
+    <div id="app">
+        <p>{{counter}}</p>
+        <!-- <input type="text" v-bind:value="message">
+        <p>{{message}}</p>
+         -->
+
+
+         <!-- v-model -> v-bind+v-on --- sync input -->
+        <input type="text" v-model="message">
+        <!-- <input type="text" :value="message" 
+        @input="message=$event.target.value"> -->
+        <p>{{message}}</p>
+
+        <!-- directives -->
+
+        <!-- v-text || v-html -->
+
+        <p v-text="content"></p>
+        <p v-html="content"></p>
+
+        <!-- v-on//events
+        click
+        keyup
+        keydown 
+
+        v-on:click
+        @click
+        -->
+
+        
+        
+        <button @click="save">save</button>
+        
+        
+
+        
+        <h3 v-show="degree>40">degree>40</h3>
+        <h3 v-show="degree<40">degree<40</h3>
+        <h3 v-show="degree==30">degree=40</h3>
+
+
+        <!-- v-if -->
+        <p v-if="isloggedIn">logged In</p>
+<!-- 
+        <h3 v-if="intake>40">Intake>40</h3>
+        <h3 v-else-if="intake<40">Intake<40</h3>
+        <h3 v-else>Intake=40</h3> -->
+
+        <!-- v-show -->
+
+        
+
+        <!-- Modifier -->
+        <!-- <input type="text" :value.trim='content' @keyup.delete="save">
+        <input type="button" @click.delete="save" value="save"> -->
+
+        <!-- <div @click="parent">
+            <button @click.stop="child">Click</button>
+        </div> -->
+
+
+
+        <a href="#" @click.prevent="save">Save</a>
+
+
+
+        <div>
+            <h1>Products</h1>
+
+            <div v-for="product in products" :key="product.id" >
+                <div v-if="product.inStock>10">
+                <p>{{product.name}}</p>
+                <p>{{product.price}}</p>
+                <input type="button" value="show name" @click="showproduct">Show name</input>
+            </div>
+            </div>
+            
+        </div>
+
+        <p>{{getmessage}}</p>
+
+        <button @click="counter++">increase counter</button>
+        <p>{{counter}}</p>
+
+        <p>{{fullName}}</p>
+
+        <button @click="fullName='Ahmed Ali'">Change name</button>
+
+
+    </div>
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="products.js"></script>
+    <script src="script.js"></script>
+    
+</body>
+</html>
