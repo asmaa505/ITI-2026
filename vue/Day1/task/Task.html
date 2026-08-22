@@ -75,44 +75,41 @@
         </div>
     </div>
 
-    <!-- Vue 3 CDN -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- Vue 2 CDN (ضروري لتعمل خاصية el) -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script>
-        const { createApp } = Vue;
-
-        createApp({
-            data() {
-                return {
-                    books: [
-                        {
-                            ISBN: '978-1',
-                            Name: 'Clean Code',
-                            Category: 'Programming',
-                            Image: '',
-                            numberOfPages: 450,
-                            author: 'Robert C. Martin',
-                            price: 40
-                        },
-                        {
-                            ISBN: '978-2',
-                            Name: 'Short Story',
-                            Category: 'Fiction',
-                            Image: 'images/img2.jpg',
-                            numberOfPages: 30,
-                            author: 'John Doe',
-                            price: 15
-                        },
-                        {
-                            ISBN: '978-3',
-                            Name: 'Vue.js Basics',
-                            Category: 'Web Dev',
-                            Image: 'images/img3.jpg',
-                            numberOfPages: 120,
-                            author: 'Evan You',
-                            price: 25
-                        }
-                    ]
-                };
+        new Vue({
+            el: '#app',
+            data: {
+                books: [
+                    {
+                        ISBN: '978-1',
+                        Name: 'Clean Code',
+                        Category: 'Programming',
+                        Image: 'images/img1.jpg',
+                        numberOfPages: 450,
+                        author: 'Robert C. Martin',
+                        price: 40
+                    },
+                    {
+                        ISBN: '978-2',
+                        Name: 'Short Story',
+                        Category: 'Fiction',
+                        Image: 'images/img2.jpg',
+                        numberOfPages: 30,
+                        author: 'John Doe',
+                        price: 15
+                    },
+                    {
+                        ISBN: '978-3',
+                        Name: 'Vue.js Basics',
+                        Category: 'Web Dev',
+                        Image: 'images/img3.jpg',
+                        numberOfPages: 120,
+                        author: 'Evan You',
+                        price: 25
+                    }
+                ]
             },
             methods: {
                 addBook() {
@@ -128,7 +125,7 @@
                     this.books.push(newBook);
                 }
             }
-        }).mount('#app');
+        });
     </script>
 
 </body>
